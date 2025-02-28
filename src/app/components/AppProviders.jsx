@@ -1,7 +1,7 @@
 import { RPConfig } from "@pdf-viewer/react";
 
-const PdfConfig = ({ children }) => (
+const AppProviders = ({ children }) => (
   <RPConfig licenseKey="your-license-key">{children}</RPConfig>
 );
 
-export default PdfConfig;
+export default AppProviders;

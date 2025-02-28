@@ -88,11 +88,11 @@ export default AppPdfViewer;
 ```jsx
 import { RPConfig, RPConfigProps } from "@pdf-viewer/react";
 
-const PdfConfig = ({ children }) => (
+const AppProviders = ({ children }) => (
   <RPConfig licenseKey="your-license-key">{children}</RPConfig>
 );
 
-export default PdfConfig;
+export default AppProviders;
 ```
 
 3. **Disable SSR for AppPdfViewer**: Disable SSR for the AppPdfViewer component by using `dynamic` from `next/dynamic` and set `ssr: false`
@@ -106,30 +106,30 @@ export const LazyAppPdfViewer = dynamic(() => import("./AppPdfViewer"), {
 });
 ```
 
-4. **Disable SSR for RPConfig**: Disable SSR for RPConfig by using `dynamic` from `next/dynamic` and set `ssr: false`
+4. **Disable SSR for AppProviders**: Disable SSR for AppProviders by using `dynamic` from `next/dynamic` and set `ssr: false`
 
 ```jsx
 "use client";
 import dynamic from "next/dynamic";
 
-export const LazyPdfConfig = dynamic(() => import("./PdfConfig"), {
+export const LazyAppProviders = dynamic(() => import("./AppProviders"), {
   ssr: false,
 });
 ```
 
-5. **Use the LazyPdfConfig component in layout**: Add the React PDF component to your page
+5. **Use the LazyAppProviders component in layout**: Add the React PDF component to your page
 
 ```jsx
 import "./globals.css";
-import { LazyPdfConfig } from "./components/LazyPdfConfig";
+import { LazyAppProviders } from "./components/LazyAppProviders";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={"antialiased"}>
-        <LazyPdfConfig licenseKey="your-license-key">
+        <LazyAppProviders>
           <main>{children}</main>
-        </LazyPdfConfig>
+        </LazyAppProviders>
       </body>
     </html>
   );

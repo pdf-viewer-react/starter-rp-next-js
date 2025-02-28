@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { LazyPdfConfig } from "./components/LazyPdfConfig";
+import { LazyAppProviders } from "./components/LazyAppProviders";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -22,9 +22,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <LazyPdfConfig licenseKey="your-license-key">
+        <LazyAppProviders>
           <main>{children}</main>
-        </LazyPdfConfig>
+        </LazyAppProviders>
       </body>
     </html>
   );
