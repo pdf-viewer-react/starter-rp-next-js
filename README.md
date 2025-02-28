@@ -48,7 +48,7 @@ This repository includes an example project to demonstrate React PDF in action.
    bun run dev
    ```
 
-2. **Open in Browser**: Open your browser and navigate to `http://localhost:5173` (or the port specified in your terminal) to see the example project in action
+2. **Open in Browser**: Open your browser and navigate to `http://localhost:3000` (or the port specified in your terminal) to see the example project in action
 
 ### Using the React PDF Component
 
@@ -117,7 +117,26 @@ export const LazyPdfConfig = dynamic(() => import("./PdfConfig"), {
 });
 ```
 
-5. **Use the Lazy component in page**: Add the React PDF component to your page
+5. **Use the LazyPdfConfig component in layout**: Add the React PDF component to your page
+
+```jsx
+import "./globals.css";
+import { LazyPdfConfig } from "./components/LazyPdfConfig";
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={"antialiased"}>
+        <LazyPdfConfig licenseKey="your-license-key">
+          <main>{children}</main>
+        </LazyPdfConfig>
+      </body>
+    </html>
+  );
+}
+```
+
+6. **Use the LazyAppPDFViewer component in page**: Add the React PDF component to your page
 
 ```jsx
 import { LazyPdfConfig } from "./components/LazyPdfConfig";
@@ -125,18 +144,16 @@ import { LazyAppPDFViewer } from "./components/LazyAppPDFViewer";
 
 export default function Home() {
   return (
-    <LazyPdfConfig licenseKey="your-license-key">
-      <div className="w-[1028px] h-[700px] mx-auto">
-        <h1>RP Starter Toolkit: Nextjs + Javascript</h1>
-        <br />
-        <h2>Default Toolbar</h2>
-        <LazyAppPDFViewer />
-        <h2>Without Toolbar</h2>
-        <LazyAppPDFViewer showToolbar={false} />
-        <h2>Mobile</h2>
-        <LazyAppPDFViewer defaultLayoutProps={{ style: { width: "500px" } }} />
-      </div>
-    </LazyPdfConfig>
+    <div className="w-[1028px] h-[700px] mx-auto">
+      <h1>RP Starter Toolkit: Nextjs + Javascript</h1>
+      <br />
+      <h2>Default Toolbar</h2>
+      <LazyAppPDFViewer />
+      <h2>Without Toolbar</h2>
+      <LazyAppPDFViewer showToolbar={false} />
+      <h2>Mobile</h2>
+      <LazyAppPDFViewer defaultLayoutProps={{ style: { width: "500px" } }} />
+    </div>
   );
 }
 ```
