@@ -139,7 +139,6 @@ export default function RootLayout({ children }) {
 6. **Use the LazyAppPdfViewer component in page**: Add the React PDF component to your page
 
 ```jsx
-import { LazyPdfConfig } from "./components/LazyPdfConfig";
 import { LazyAppPdfViewer } from "./components/LazyAppPdfViewer";
 
 export default function Home() {
