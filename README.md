@@ -59,7 +59,7 @@ Once the example project is running, you can explore the source code to see how 
 ```jsx
 import { RPProvider, RPDefaultLayout, RPPages } from "@pdf-viewer/react";
 
-const AppPDFViewer = (props) => {
+const AppPdfViewer = (props) => {
   const { showToolbar = true, providerProps, defaultLayoutProps } = props;
 
   return (
@@ -80,7 +80,7 @@ const AppPDFViewer = (props) => {
   );
 };
 
-export default PDFViewer;
+export default AppPdfViewer;
 ```
 
 2. **Import Config Component**: Import the Config component
@@ -88,20 +88,20 @@ export default PDFViewer;
 ```jsx
 import { RPConfig, RPConfigProps } from "@pdf-viewer/react";
 
-const PDFConfig = ({ children }) => (
+const PdfConfig = ({ children }) => (
   <RPConfig licenseKey="your-license-key">{children}</RPConfig>
 );
 
-export default PDFConfig;
+export default PdfConfig;
 ```
 
-3. **Disable SSR for AppPDFViewer**: Disable SSR for the AppPDFViewer component by using `dynamic` from `next/dynamic` and set `ssr: false`
+3. **Disable SSR for AppPdfViewer**: Disable SSR for the AppPdfViewer component by using `dynamic` from `next/dynamic` and set `ssr: false`
 
 ```jsx
 "use client";
 import dynamic from "next/dynamic";
 
-export const LazyAppPDFViewer = dynamic(() => import("./AppPDFViewer"), {
+export const LazyAppPdfViewer = dynamic(() => import("./AppPdfViewer"), {
   ssr: false,
 });
 ```
@@ -136,11 +136,11 @@ export default function RootLayout({ children }) {
 }
 ```
 
-6. **Use the LazyAppPDFViewer component in page**: Add the React PDF component to your page
+6. **Use the LazyAppPdfViewer component in page**: Add the React PDF component to your page
 
 ```jsx
 import { LazyPdfConfig } from "./components/LazyPdfConfig";
-import { LazyAppPDFViewer } from "./components/LazyAppPDFViewer";
+import { LazyAppPdfViewer } from "./components/LazyAppPdfViewer";
 
 export default function Home() {
   return (
@@ -148,11 +148,11 @@ export default function Home() {
       <h1>RP Starter Toolkit: Nextjs + Javascript</h1>
       <br />
       <h2>Default Toolbar</h2>
-      <LazyAppPDFViewer />
+      <LazyAppPdfViewer />
       <h2>Without Toolbar</h2>
-      <LazyAppPDFViewer showToolbar={false} />
+      <LazyAppPdfViewer showToolbar={false} />
       <h2>Mobile</h2>
-      <LazyAppPDFViewer defaultLayoutProps={{ style: { width: "500px" } }} />
+      <LazyAppPdfViewer defaultLayoutProps={{ style: { width: "500px" } }} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { LazyAppPDFViewer } from "./components/LazyAppPDFViewer";
+import { LazyAppPdfViewer } from "./components/LazyAppPdfViewer";
 
 export default function Home() {
   return (
@@ -6,11 +6,11 @@ export default function Home() {
       <h1>RP Starter Toolkit: Nextjs + Javascript</h1>
       <br />
       <h2>Default Toolbar</h2>
-      <LazyAppPDFViewer />
+      <LazyAppPdfViewer />
       <h2>Without Toolbar</h2>
-      <LazyAppPDFViewer showToolbar={false} />
+      <LazyAppPdfViewer showToolbar={false} />
       <h2>Mobile</h2>
-      <LazyAppPDFViewer defaultLayoutProps={{ style: { width: "500px" } }} />
+      <LazyAppPdfViewer defaultLayoutProps={{ style: { width: "500px" } }} />
     </div>
   );
 }
