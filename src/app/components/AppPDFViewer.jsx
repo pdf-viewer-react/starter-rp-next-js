@@ -25,4 +25,4 @@ const AppPdfViewer = (props) => {
   );
 };
 
-export default AppPDFViewer;
+export default AppPdfViewer;
