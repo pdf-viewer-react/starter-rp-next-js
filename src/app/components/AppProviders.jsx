@@ -1,7 +1,10 @@
-import { RPConfig } from "@pdf-viewer/react";
+"use client";
+import { RPConfig } from "@react-pdf-kit/viewer";
 
-const AppProviders = ({ children, ...props }) => (
-  <RPConfig {...props}>{children}</RPConfig>
-);
-
+function AppProviders({
+  children,
+  ...props
+}) {
+  return <RPConfig {...props}>{children}</RPConfig>;
+}
 export default AppProviders;

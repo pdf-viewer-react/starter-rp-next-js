@@ -1,8 +1,8 @@
-# React PDF Starter Toolkit in Next.js and JavaScript
+# React PDF Kit Starter Toolkit in Next.js with App Router and JavaScript
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/~/github.com/react-pdf-dev/starter-rp-nextjs-app-router-js)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github.com/react-pdf-kit/starter-rp-nextjs-app-router-js)
 
-Welcome to the React PDF Starter Toolkit! This repository provides a comprehensive guide on integrating React PDF with Nextjs and JavaScript. It showcases how React PDF can be integrated and rendered as part of a Next.js project.
+Welcome to the React PDF Kit Starter Toolkit! This repository provides a comprehensive guide on integrating React PDF Kit with Next.js with App Router and JavaScript. It showcases the React PDF Viewer component can be integrated and rendered as part of a Next.js project.
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@ Welcome to the React PDF Starter Toolkit! This repository provides a comprehensi
 1. **Clone the Repository**: If you haven't already, clone the repository and navigate into the project directory.
 
    ```bash
-   git clone https://github.com/react-pdf-dev/starter-rp-nextjs-app-router-js
+   git clone https://github.com/react-pdf-kit/starter-rp-nextjs-app-router-js.git
    cd starter-rp-nextjs-app-router-js
    ```
 
@@ -36,7 +36,7 @@ Welcome to the React PDF Starter Toolkit! This repository provides a comprehensi
 
 ### Running the Example Project
 
-This repository includes an example project to demonstrate React PDF in action.
+This repository includes an example project to demonstrate the React PDF Kit in action.
 
 1. **Start the Development Server**: Use the following command to start the development server
 
@@ -59,20 +59,25 @@ This example uses the Next.js App Router, which requires marking your PDF compon
 1.  **Import the component**: Import the desired React PDF component into your codes
 
 ```jsx
-import { RPProvider, RPDefaultLayout, RPPages } from "@pdf-viewer/react";
+"use client";
+import {
+  RPProvider,
+  RPLayout,
+  RPPages,
+} from "@react-pdf-kit/viewer";
 
 const AppPdfViewer = (props) => {
   const { showToolbar = true, providerProps, defaultLayoutProps } = props;
 
   return (
     <RPProvider
-      src="https://cdn.codewithmosh.com/image/upload/v1721763853/guides/web-roadmap.pdf"
+      src="https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf"
       {...providerProps}
     >
       {showToolbar ? (
-        <RPDefaultLayout {...defaultLayoutProps}>
+        <RPLayout toolbar {...defaultLayoutProps}>
           <RPPages />
-        </RPDefaultLayout>
+        </RPLayout>
       ) : (
         <div style={{ width: "100%", height: "550px" }}>
           <RPPages />
@@ -88,12 +93,15 @@ export default AppPdfViewer;
 2. **Import Config Component**: Import the Config component
 
 ```jsx
-import { RPConfig, RPConfigProps } from "@pdf-viewer/react";
+"use client";
+import { RPConfig } from "@react-pdf-kit/viewer";
 
-const AppProviders = ({ children }) => (
-  <RPConfig licenseKey="your-license-key">{children}</RPConfig>
-);
-
+function AppProviders({
+  children,
+  ...props
+}) {
+  return <RPConfig {...props}>{children}</RPConfig>;
+}
 export default AppProviders;
 ```
 
@@ -103,7 +111,7 @@ export default AppProviders;
 "use client";
 import dynamic from "next/dynamic";
 
-export const LazyAppPdfViewer = dynamic(() => import("./AppPdfViewer"), {
+export const LazyAppPdfViewer = dynamic(() => import("./AppPDFViewer"), {
   ssr: false,
 });
 ```
@@ -141,12 +149,12 @@ export default function RootLayout({ children }) {
 6. **Use the LazyAppPdfViewer component in page**: Add the React PDF component to your page
 
 ```jsx
-import { LazyAppPdfViewer } from "./components/LazyAppPdfViewer";
+import { LazyAppPdfViewer } from "./components/LazyAppPDFViewer";
 
 export default function Home() {
   return (
     <div className="w-[1028px] h-[700px] mx-auto">
-      <h1>RP Starter Toolkit: Nextjs + Javascript</h1>
+      <h1>React PDF Kit Starter Toolkit in Next.js with App Router and JavaScript</h1>
       <br />
       <h2>Default Toolbar</h2>
       <LazyAppPdfViewer />
@@ -155,13 +163,13 @@ export default function Home() {
       <h2>Mobile</h2>
       <LazyAppPdfViewer defaultLayoutProps={{ style: { width: "500px" } }} />
     </div>
-  );
+  )
 }
 ```
 
 ## Examples
 
-For more examples, please refer to the `src/App.jsx` file in this repository:
+For more examples, please refer to the `src/app/page.js` file in this repository:
 
 - Default Toolbar
 - Without Toolbar
@@ -169,12 +177,12 @@ For more examples, please refer to the `src/App.jsx` file in this repository:
 
 _Remark: If you would like more examples, feel free open an issue._
 
-For more configurations, please check the [documentation](https://docs.react-pdf.dev) site.
+For more configurations, please check the [documentation](https://docs.react-pdf-kit.dev) site.
 
 ## Meta
-- Homepage: [https://www.react-pdf.dev](https://www.react-pdf.dev)
-- Docs: [https://docs.react-pdf.dev](https://docs.react-pdf.dev)
+- Homepage: [https://www.react-pdf-kit.dev](https://www.react-pdf-kit.dev)
+- Docs: [https://docs.react-pdf-kit.dev](https://docs.react-pdf-kit.dev)
 
 ---
 
-Thank you for using React PDF! We hope this toolkit helps you build amazing Next.js applications. If you have any questions or need further assistance on this example, please feel free to open an issue. Happy coding!
+Thank you for using React PDF Kit! We hope this toolkit helps you build amazing Next.js applications. If you have any questions or need further assistance on this example, please feel free to open an issue. Happy coding!
