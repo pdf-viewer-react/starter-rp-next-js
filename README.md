@@ -111,7 +111,7 @@ export default AppProviders;
 "use client";
 import dynamic from "next/dynamic";
 
-export const LazyAppPdfViewer = dynamic(() => import("./AppPDFViewer"), {
+export const LazyAppPdfViewer = dynamic(() => import("./AppPdfViewer"), {
   ssr: false,
 });
 ```
@@ -149,7 +149,7 @@ export default function RootLayout({ children }) {
 6. **Use the LazyAppPdfViewer component in page**: Add the React PDF component to your page
 
 ```jsx
-import { LazyAppPdfViewer } from "./components/LazyAppPDFViewer";
+import { LazyAppPdfViewer } from "./components/LazyAppPdfViewer";
 
 export default function Home() {
   return (
